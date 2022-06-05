@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/styles/style.css">
+    <title>HF-Wallet</title>
+</head>
+
+<body style="width: 400px;" class="bg-slate-50">
+    <div id="welcome-page">
+        <div class="flex flex-row p-2 shadow-sm bg-white">
+            <img src="../public/images/logo.png" width="50px" height="50px" alt="Hyperledger logo">
+
+            <div class="flex flex-col px-4">
+                <h2 class="font-bold text-lg">HF-Wallet</h2>
+                <span>Hyperledger fabric wallet</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1  place-content-center px-4 py-6">
+            <h2 class="text-lg mx-auto">Set passowrd for your wallet</h2>
+            <h5 class="mx-auto">This password will be used to encrypt your identity.</h5>
+            <img class="mx-auto" src="../public/images/lock.png" alt="Lock image" width="150px" height="150px">
+
+            <div class="px-4 w-full space-y-4">
+                <input type="password" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
+                    placeholder="Password">
+                <input type="password" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
+                    placeholder="Confirm password">
+
+                <button class="w-full bg-slate-700 rounded-md text-white h-10 shadow-sm">Set Password</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

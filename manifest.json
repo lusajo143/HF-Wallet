@@ -1,3 +1,17 @@
 {
+    "manifest_version": 3,
+    "name": "HL-Wallet",
+    "version": "1.0.0",
+    "description": "A Hyperledger Fabric Wallet extension",
+    "background": {
+        "service_worker": "scripts/background.js"
+    },
+    "permissions": [
+        "activeTab"
+    ],
     
+    "action": {
+        "default_icon": "icons/icon_16.png",
+        "default_popup": "views/popup.html"
+    }
 }
