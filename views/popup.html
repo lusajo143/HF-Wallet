@@ -9,6 +9,7 @@
         content="default-src gap://ready file://* *; style-src 'self' http://* https://* 'unsafe-inline'; script-src 'self' http://* https://* 'unsafe-inline' 'unsafe-eval'">
     <link rel="stylesheet" href="../public/styles/style.css">
     <script src="./object-hash.js"></script>
+    <script src="./crypto-js.js"></script>
 
     <title>HF-Wallet</title>
 </head>
@@ -47,9 +48,11 @@
     <div id="mode-selection">
         <div class="flex flex-col px-4 py-6">
             <h2 class="text-lg mx-auto">Select mode of operation</h2>
-            <button class="w-full bg-slate-700 h-10 shadow-sm rounded-md my-2 text-white active:bg-slate-600">User
+            <button class="w-full bg-slate-700 h-10 shadow-sm rounded-md my-2 text-white active:bg-slate-600"
+                id="user-mode">User
                 Mode</button>
-            <button class="w-full bg-slate-700 h-10 shadow-sm rounded-md my-2 text-white active:bg-slate-600">Developer
+            <button class="w-full bg-slate-700 h-10 shadow-sm rounded-md my-2 text-white active:bg-slate-600"
+                id="developer-mode">Developer
                 Mode</button>
         </div>
     </div>
@@ -64,7 +67,7 @@
                 <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
                     placeholder="Identity" name="identity">
                 <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
-                    placeholder="Connection profile" name="ccp">
+                    placeholder="Connection profile (Json data)" name="ccp">
                 <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
                     placeholder="Chaincode name" name="ccn">
                 <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
@@ -81,9 +84,21 @@
         </div>
     </div>
 
-    <div id="test-connection">
-        <div class="grid grid-columns-1 px-4 py-6">
-            s
+    <div id="connection">
+        <div class="grid grid-columns-1 px-4 py-6 space-y-4">
+            <h2 class="text-lg mx-auto">Unlock your wallet</h2>
+
+            <img class="mx-auto" src="../public/images/lock.png" alt="Lock image" width="150px" height="150px">
+
+
+            <form onsubmit="return false" id="connect-form">
+                <input type="password" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
+                placeholder="Password" name="connect-pwd">
+            </form>
+
+            <button class="w-full bg-slate-700 h-10 shadow-sm rounded-md my-2 text-white active:bg-slate-600"
+                id="connect-btn">Connect</button>
+
         </div>
     </div>
 

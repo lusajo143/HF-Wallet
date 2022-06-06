@@ -2,12 +2,12 @@
 let welcome_page = document.getElementById('welcome-page')
 let mode_selection = document.getElementById('mode-selection')
 let user_setup = document.getElementById('user-setup')
-let test_connection = document.getElementById('test-connection')
+let connection = document.getElementById('connection')
 
 
 welcome_page.hidden = true
 mode_selection.hidden = true
-test_connection.hidden = true
+connection.hidden = true
 user_setup.hidden = true
 
 
@@ -28,6 +28,19 @@ document.getElementById('set-password').addEventListener('click', () => {
             fromTo('welcome-page', 'mode-selection')
         })
     }
+})
+
+// Choose mode
+document.getElementById('user-mode').addEventListener('click', () => {
+    chrome.storage.sync.set({mode: 'user'}, () => {
+        fromTo('mode-selection', 'user-setup')
+    })
+})
+
+document.getElementById('developer-mode').addEventListener('click', () => {
+    chrome.storage.sync.set({mode: 'developer'}, () => {
+        fromTo('mode-selection', 'developer-setup')
+    })
 })
 
 // Save user data
@@ -53,17 +66,12 @@ document.getElementById('save-user-data-btn').addEventListener('click', function
 
     data = { username, identity, ccp, ccn, ca }
 
-    //    localStorage.setItem('username', username)
-    //    console.log(localStorage.getItem('username') + ' get');
-    chrome.storage.sync.set({ data }, function () {
-        fromTo('user-setup', 'test-connection')
-    });
-
-    // chrome.storage.sync.get(['data'], (result) => {
-    //     console.log(result.data);
-    // })
-
-
+    chrome.storage.sync.get(['password'], (result) => {
+        let cipher = CryptoJS.AES.encrypt(JSON.stringify(data), result.password)
+        chrome.storage.sync.set({cipher_data: cipher.toString()}, () => {
+            fromTo('user-setup', 'connection')
+        })
+    })
 })
 
 
