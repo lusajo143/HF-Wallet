@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <div id="user-setup">
+    <div id="user-setup-1">
         <div class="grid grid-columns-1 px-4 py-6 space-y-4">
             <h2 class="text-lg mx-auto">User mode setup</h2>
             <h5 class="mx-auto">Set your configurations below</h5>
@@ -67,15 +67,30 @@
                 <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
                     placeholder="Identity" name="identity">
                 <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
-                    placeholder="Connection profile (Json data)" name="ccp">
-                <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
                     placeholder="Chaincode name" name="ccn">
                 <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
                     placeholder="Ca name" name="ca">
 
 
             </form>
-            <button id="save-user-data-btn"
+            <button id="save-user-data-next"
+                class="w-full bg-slate-700 h-10 shadow-sm rounded-md my-2 text-white active:bg-slate-600">
+                Save
+            </button>
+
+            <a href="#" class="mx-auto underline text-blue-500">Discard</a>
+        </div>
+    </div>
+
+    <div id="user-setup-2">
+        <div class="grid grid-columns-1 px-4 py-6 space-y-4">
+            <h2 class="text-lg mx-auto">User mode setup</h2>
+            <h5 class="mx-auto">Set your configurations below</h5>
+            <form onsubmit="return false" id="ccp-form" class="space-y-4">
+                <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
+                    placeholder="Connection profile (Json data)" name="ccp">
+            </form>
+            <button id="ccp-btn"
                 class="w-full bg-slate-700 h-10 shadow-sm rounded-md my-2 text-white active:bg-slate-600">
                 Save
             </button>
@@ -90,19 +105,26 @@
 
             <img class="mx-auto" src="../public/images/lock.png" alt="Lock image" width="150px" height="150px">
 
-
             <form onsubmit="return false" id="connect-form">
                 <input type="password" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
                 placeholder="Password" name="connect-pwd">
+                <div class="mt-2" id="wrong-password" hidden="true">
+                    <label class="text-red-700">Wrong password</label>
+                </div>
+                <div class="mt-2" id="empty-pwd" hidden="true">
+                    <label class="text-red-700">Enter your password above.</label>
+                </div>
             </form>
 
             <button class="w-full bg-slate-700 h-10 shadow-sm rounded-md my-2 text-white active:bg-slate-600"
                 id="connect-btn">Connect</button>
 
+            <a class="underline mx-auto cursor-pointer" id="resetWallet">Reset wallet</a>
+
         </div>
     </div>
 
-    <script src="./controller.js"></script>
+    <script src="./controller.js" type="module"></script>
 
 </body>
 

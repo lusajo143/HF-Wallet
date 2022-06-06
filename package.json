@@ -1,5 +1,9 @@
 {
   "devDependencies": {
     "tailwindcss": "^3.0.24"
+  },
+  "dependencies": {
+    "fabric-ca-client": "^2.2.13",
+    "fabric-network": "^2.2.13"
   }
 }
