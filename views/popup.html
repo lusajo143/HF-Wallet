@@ -5,20 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src gap://ready file://* *; style-src 'self' http://* https://* 'unsafe-inline'; script-src 'self' http://* https://* 'unsafe-inline' 'unsafe-eval'">
     <link rel="stylesheet" href="../public/styles/style.css">
+    <script src="./object-hash.js"></script>
+
     <title>HF-Wallet</title>
 </head>
 
-<body style="width: 400px;" class="bg-slate-50">
-    <div id="welcome-page">
-        <div class="flex flex-row p-2 shadow-sm bg-white">
-            <img src="../public/images/logo.png" width="50px" height="50px" alt="Hyperledger logo">
+<body style="width: 350px;" class="bg-slate-50">
+    <div class="flex flex-row p-2 shadow-sm bg-white">
+        <img src="../public/images/logo.png" width="50px" height="50px" alt="Hyperledger logo">
 
-            <div class="flex flex-col px-4">
-                <h2 class="font-bold text-lg">HF-Wallet</h2>
-                <span>Hyperledger fabric wallet</span>
-            </div>
+        <div class="flex flex-col px-4">
+            <h2 class="font-bold text-lg">HF-Wallet</h2>
+            <span>Hyperledger fabric wallet</span>
         </div>
+    </div>
+    <div id="welcome-page">
+
 
         <div class="grid grid-cols-1  place-content-center px-4 py-6">
             <h2 class="text-lg mx-auto">Set passowrd for your wallet</h2>
@@ -26,15 +31,64 @@
             <img class="mx-auto" src="../public/images/lock.png" alt="Lock image" width="150px" height="150px">
 
             <div class="px-4 w-full space-y-4">
-                <input type="password" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
-                    placeholder="Password">
-                <input type="password" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
-                    placeholder="Confirm password">
+                <form id="password-form" onsubmit="return false" class="space-y-4">
+                    <input type="password" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
+                        placeholder="Password" name="pwd">
+                    <input type="password" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
+                        placeholder="Confirm password" name="cpwd">
+                </form>
 
-                <button class="w-full bg-slate-700 rounded-md text-white h-10 shadow-sm">Set Password</button>
+                <button class="w-full bg-slate-700 rounded-md text-white h-10 shadow-sm" id="set-password">Set
+                    Password</button>
             </div>
         </div>
     </div>
+
+    <div id="mode-selection">
+        <div class="flex flex-col px-4 py-6">
+            <h2 class="text-lg mx-auto">Select mode of operation</h2>
+            <button class="w-full bg-slate-700 h-10 shadow-sm rounded-md my-2 text-white active:bg-slate-600">User
+                Mode</button>
+            <button class="w-full bg-slate-700 h-10 shadow-sm rounded-md my-2 text-white active:bg-slate-600">Developer
+                Mode</button>
+        </div>
+    </div>
+
+    <div id="user-setup">
+        <div class="grid grid-columns-1 px-4 py-6 space-y-4">
+            <h2 class="text-lg mx-auto">User mode setup</h2>
+            <h5 class="mx-auto">Set your configurations below</h5>
+            <form onsubmit="return false" id="user-data-form" class="space-y-4">
+                <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
+                    placeholder="Username" name="username">
+                <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
+                    placeholder="Identity" name="identity">
+                <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
+                    placeholder="Connection profile" name="ccp">
+                <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
+                    placeholder="Chaincode name" name="ccn">
+                <input type="text" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
+                    placeholder="Ca name" name="ca">
+
+
+            </form>
+            <button id="save-user-data-btn"
+                class="w-full bg-slate-700 h-10 shadow-sm rounded-md my-2 text-white active:bg-slate-600">
+                Save
+            </button>
+
+            <a href="#" class="mx-auto underline text-blue-500">Discard</a>
+        </div>
+    </div>
+
+    <div id="test-connection">
+        <div class="grid grid-columns-1 px-4 py-6">
+            s
+        </div>
+    </div>
+
+    <script src="./controller.js"></script>
+
 </body>
 
 </html>

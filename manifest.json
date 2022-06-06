@@ -7,9 +7,12 @@
         "service_worker": "scripts/background.js"
     },
     "permissions": [
-        "activeTab"
+        "activeTab", "storage"
     ],
-    
+    "host_permissions": [
+        "https://*/",
+        "http://*/"
+    ],
     "action": {
         "default_icon": "icons/icon_16.png",
         "default_popup": "views/popup.html"
