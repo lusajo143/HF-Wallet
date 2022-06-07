@@ -112,12 +112,25 @@ document.getElementById('connect-btn').addEventListener('click', () => {
                     if (hash == passwordResult.password) {
                         document.getElementById('wrong-password').hidden = true
                         let decryptedData = CryptoJS.AES.decrypt(result.cipher_data.toString(), passwordResult.password)
-                        let decryptedCcp = CryptoJS.AES.decrypt(result.cipher_ccp.toString(), passwordResult.password)
+                        let decryptedCcp = CryptoJS.AES.decrypt(ccpResult.cipher_ccp.toString(), passwordResult.password)
 
                         try {
-                            decryptedData = decryptedData.toString(CryptoJS.enc.Utf8)
+                            decryptedData = JSON.parse(decryptedData.toString(CryptoJS.enc.Utf8))
                             decryptedCcp = decryptedCcp.toString(CryptoJS.enc.Utf8)
-                            console.log(JSON.parse(JSON.parse(decryptedData).identity));
+                            // console.log(JSON.parse(JSON.parse(decryptedData).identity));
+
+                            document.getElementById('username-unlocked').innerHTML = decryptedData.username
+                            document.getElementById('ccn-unlocked').innerHTML = decryptedData.ccn
+                            document.getElementById('ca-unlocked').innerHTML = decryptedData.ca
+
+                            // Save unlocked
+                            fromTo('connection', 'unlocked')
+
+                            // Send request to content script for 
+                            // chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+                            //     chrome.tabs.sendMessage(tabs[0].id, { greeting: "hello" }, function () {
+                            //     });
+                            // });
                         } catch (e) {
                             console.log(e);
                         }
@@ -131,6 +144,10 @@ document.getElementById('connect-btn').addEventListener('click', () => {
         document.getElementById('empty-pwd').hidden = false
     }
 
+})
+
+document.getElementById('lock').addEventListener('click', () => {
+    fromTo('unlocked', 'connection')
 })
 
 document.getElementById('resetWallet').addEventListener('click', () => {
@@ -147,6 +164,7 @@ function fromTo(from, to) {
 
 
 // Stage management
+fromTo('unlocked', 'connection')
 function setStage(activeStage) {
     chrome.storage.sync.set({ activeStage }, () => { })
     getActiveStage()

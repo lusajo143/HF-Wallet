@@ -58,7 +58,7 @@
     </div>
 
     <div id="user-setup-1">
-        <div class="grid grid-columns-1 px-4 py-6 space-y-4">
+        <div class="grid grid-cols-1 px-4 py-6 space-y-4">
             <h2 class="text-lg mx-auto">User mode setup</h2>
             <h5 class="mx-auto">Set your configurations below</h5>
             <form onsubmit="return false" id="user-data-form" class="space-y-4">
@@ -83,7 +83,7 @@
     </div>
 
     <div id="user-setup-2">
-        <div class="grid grid-columns-1 px-4 py-6 space-y-4">
+        <div class="grid grid-cols-1 px-4 py-6 space-y-4">
             <h2 class="text-lg mx-auto">User mode setup</h2>
             <h5 class="mx-auto">Set your configurations below</h5>
             <form onsubmit="return false" id="ccp-form" class="space-y-4">
@@ -100,14 +100,14 @@
     </div>
 
     <div id="connection">
-        <div class="grid grid-columns-1 px-4 py-6 space-y-4">
+        <div class="grid grid-cols-1 px-4 py-6 space-y-4">
             <h2 class="text-lg mx-auto">Unlock your wallet</h2>
 
             <img class="mx-auto" src="../public/images/lock.png" alt="Lock image" width="150px" height="150px">
 
             <form onsubmit="return false" id="connect-form">
                 <input type="password" class="border-b-2 border-slate-600 w-full h-10 px-4 focus:outline-none"
-                placeholder="Password" name="connect-pwd">
+                    placeholder="Password" name="connect-pwd">
                 <div class="mt-2" id="wrong-password" hidden="true">
                     <label class="text-red-700">Wrong password</label>
                 </div>
@@ -117,7 +117,33 @@
             </form>
 
             <button class="w-full bg-slate-700 h-10 shadow-sm rounded-md my-2 text-white active:bg-slate-600"
-                id="connect-btn">Connect</button>
+                id="connect-btn">Unlock</button>
+
+            <a class="underline mx-auto cursor-pointer" id="resetWallet">Reset wallet</a>
+
+        </div>
+    </div>
+
+    <div id="unlocked">
+        <div class="grid grid-cols-1 px-4 py-6 space-y-4">
+            <h2 class="text-lg mx-auto">Account Details</h2>
+            <div class="divide-y divide-solid">
+                <div></div>
+                <div class="py-2 flex flex-row justify-between">
+                    <span class="font-bold">Username: </span>
+                    <span class="text-slate-700" id="username-unlocked"></span>
+                </div>
+                <div class="py-2 flex flex-row justify-between">
+                    <span class="font-bold">Chaincode Name: </span>
+                    <span class="text-slate-700" id="ccn-unlocked"></span>
+                </div>
+                <div class="py-2 flex flex-row justify-between">
+                    <span class="font-bold">Ca Name: </span>
+                    <span class="text-slate-700" id="ca-unlocked"></span>
+                </div>
+            </div>
+            <button class="w-full bg-slate-700 h-10 shadow-sm rounded-md my-2 text-white active:bg-slate-600"
+                id="lock">Lock</button>
 
             <a class="underline mx-auto cursor-pointer" id="resetWallet">Reset wallet</a>
 

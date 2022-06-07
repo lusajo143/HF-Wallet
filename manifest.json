@@ -16,5 +16,16 @@
     "action": {
         "default_icon": "icons/icon_16.png",
         "default_popup": "views/popup.html"
-    }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*/",
+                "http://*/"
+            ],
+            "js": [
+                "./views/content.js"
+            ]
+        }
+    ]
 }
